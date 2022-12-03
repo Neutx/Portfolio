@@ -72,6 +72,10 @@ html {
 
 body,
 button,
+name,
+email,
+phone,
+message,
 input {
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
@@ -101,6 +105,10 @@ img {
 }
 
 button,
+name,
+email,
+phone,
+message,
 input {
     border: none;
     outline: none;
@@ -986,13 +994,20 @@ input {
 .contact__button:hover .contact__button-icon {
     transform: translateX(.25rem);
 }
-
+.name__container,
+.email__container,
+.phone__container,
+.message__container,
 .input__container {
     position: relative;
     margin-top: .1rem;
     margin-bottom: 1.9rem;
 }
 
+.name,
+.email,
+.phone,
+.message,
 .input {
     width: 100%;
     border: 2px solid var(--text-color);
@@ -1006,7 +1021,10 @@ input {
     border-radius: .50rem;
     transition: .3s;
 }
-
+textarea.name,
+textarea.email,
+textarea.phone,
+textarea.message,
 textarea.input {
     padding: .8rem 1.2rem;
     min-height: 140px;
@@ -1014,6 +1032,10 @@ textarea.input {
     resize: none;
 }
 
+.name__container,
+.email__container,
+.phone__container,
+.message__container,
 .input__container label {
     position: absolute;
     top: 50%;
@@ -1028,11 +1050,19 @@ textarea.input {
     transition: .5s;
 }
 
+.name__container,
+.email__container,
+.phone__container,
+.message__container,
 .input__container.textarea label {
     top: 1rem;
     transform: translateY(0);
 }
 
+.name__container,
+.email__container,
+.phone__container,
+.message__container,
 .input__container span{
     position: absolute;
     top: 0;
@@ -1045,6 +1075,15 @@ textarea.input {
     z-index: var(--z-fixed);
 }
 
+
+.name__container span::before,
+.email__container span::before,
+.phone__container span::before,
+.message__container span::before,
+.name__container span::after,
+.email__container span::after,
+.phone__container span::after,
+.message__container span::after,
 .input__container span::before,
 .input__container span::after {
     content: '';
@@ -1058,14 +1097,26 @@ textarea.input {
     transition: .3s;
 }
 
+.name__container span::before,
+.email__container span::before,
+.phone__container span::before,
+.message__container span::before,
 .input__container span::before {
     left: 50%;
 }
 
+.name__container span::after,
+.email__container span::after,
+.phone__container span::after,
+.message__container span::after,
 .input__container span::after {
     right: 50%;
 }
 
+.name__container.focus label ,
+.email__container.focus label ,
+.phone__container.focus label ,
+.message__container.focus label ,
 .input__container.focus label {
     top: 0;
     transform: translateY(-50%);
@@ -1073,6 +1124,14 @@ textarea.input {
     font-size: var(--smaller-font-size);
 }
 
+.name__container.focus span::before,
+.email__container.focus span::before,
+.phone__container.focus span::before,
+.message__container.focus span::before,
+.name__container.focus span::after,
+.email__container.focus span::after,
+.phone__container.focus span::after,
+.message__container.focus span::after,
 .input__container.focus span::before,
 .input__container.focus span::after {
     width: 50%;

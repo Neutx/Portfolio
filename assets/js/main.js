@@ -192,34 +192,37 @@ const firebaseConfig = {
 //initialize firebase
 firebase.initializeApp(firebaseConfig);
 // reference your database
-var contactFormDB = firebase.database().ref('contactForm')
+let contactInfo = firebase.database().ref('Infos')
 
-document.getElementById('contactform').addEventListener('submit',submitForm);
+document.querySelector('.contact__form').addEventListener('submit',submitForm);
+
+
 
 
 function submitForm(e){
     e.preventDefault();
 
+    
     //get values
-    var name = getInputVal('name');
-    var email = getInputVal('email');
-    var phone = getInputVal('phone');
-    var message = getInputVal('message');
+    let name = document.querySelector('input').value
+    let email = document.querySelector('input').value
+    let phone = document.querySelector('input').value
+    let message = document.querySelector('input').value
 
     console.log(name, email, phone, message);
 
-    const getInputVal = (id) => {
-        return document.getElementById(id).value;
-    }
+    saveContactInfo(name, email, phone, message);
+}
+
+function saveContactInfo(name, email, phone, message) {
+    let newContactInfo = contactInfo.push();
+
+    newContactInfo.set({
+        Name: name,
+        Email: email,
+        Phone: phone,
+        Message: message,
+    }) 
+}
 
 
-//save message to firebase
-function saveMessage(name, email, phone, message){
-    var newMessageRef = messageRef.push();
-    newMessageRef.set({
-        name: name,
-        email: email,
-        phone: phone,
-        message: message
-    })
-}}
