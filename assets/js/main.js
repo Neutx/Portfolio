@@ -104,6 +104,95 @@ modalCloses.forEach((modalClose) => {
     })
 })
 
+/*============== Number Speak for themsleves ==============*/
+  $(document).ready(function () {
+    var isCounterUpActivated = false;
+    $(window).scroll(function () {
+      var scrollTop = $(window).scrollTop();
+      var elementOffset = $(".running-number").offset().top;
+      var distance = elementOffset - scrollTop;
+
+      if (distance < 600 && !isCounterUpActivated) {
+        activateCounterUp();
+        isCounterUpActivated = true;
+      }
+    });
+
+    function activateCounterUp() {
+      $(".counter").each(function () {
+        var $this = $(this);
+        var targetValue = parseInt($this.text());
+        var suffix = $this.data("suffix");
+
+        $({ Counter: 0 }).animate(
+          { Counter: targetValue },
+          {
+            duration: 3000, // Adjust the duration to control animation speed (in milliseconds)
+            easing: "swing",
+            step: function () {
+              var formattedValue = Math.ceil(this.Counter);
+
+              if (suffix && suffix !== "+") {
+                formattedValue += suffix;
+              }
+
+              $this.text(formattedValue);
+            },
+            complete: function () {
+              if (suffix && suffix === "+") {
+                $this.text($this.text() + suffix);
+              }
+            },
+          }
+        );
+      });
+
+      setInterval(function () {
+        $(".counter").each(function () {
+          var $this = $(this);
+          var targetValue = parseInt($this.text().replace(/[^\d.-]/g, ""));
+          var suffix = $this.data("suffix");
+
+          $({ Counter: 0 }).animate(
+            { Counter: targetValue },
+            {
+              duration: 3000, // Adjust the duration to control animation speed (in milliseconds)
+              easing: "swing",
+              step: function () {
+                var formattedValue = Math.ceil(this.Counter);
+
+                if (suffix && suffix !== "+") {
+                  formattedValue += suffix;
+                }
+
+                $this.text(formattedValue);
+              },
+              complete: function () {
+                if (suffix && suffix === "+") {
+                  $this.text($this.text() + suffix);
+                }
+              },
+            }
+          );
+        });
+      }, 6000); // Repeat the animation every 6 seconds (adjust as needed)
+    }
+  });
+
+
+/*============= Countries We Export In =============*/
+
+const typed = new Typed(".multiple-text", {
+    strings: [
+        "The site is under construction.",
+        "We will be live soon.",
+        "Stay Tuned.",
+    ],
+    typeSpeed: 100,
+    backSpeed: 100,
+    backDelay: 1000,
+    loop: true,
+});
 /*=============== SWIPER TESTIMONIAL ===============*/
 let swiper = new Swiper(".testimonials__container", {
     spaceBetween: 24,
