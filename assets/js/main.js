@@ -226,3 +226,21 @@ function saveContactInfo(name, email, phone, message) {
 }
 
 
+
+//Email JS
+
+function SendMail(event) {
+    event.preventDefault(); // Prevent the default form submission
+    console.log('SendMail() function called');
+    var params = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value,
+    }
+    emailjs.send('service_po7nl6l', 'template_fzcaw5s', params).then(function(res){
+        alert("Sent Successfully!" + res.status);
+    }).catch(function(error) {
+        console.error("Email sending failed:", error);
+    });
+}

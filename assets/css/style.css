@@ -936,6 +936,13 @@ input {
 }
 
 /*===== Contact Section =====*/
+.contact{
+
+    padding: 2rem 1.5rem;
+    border-radius: .5rem;
+
+}
+
 .contact__container {
     grid-template-columns: 300px 340px;
     column-gap: 3rem;
