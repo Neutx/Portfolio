@@ -239,7 +239,7 @@ function SendMail(event) {
         message: document.getElementById("message").value,
     }
     emailjs.send('service_po7nl6l', 'template_fzcaw5s', params).then(function(res){
-        alert("Sent Successfully!" + res.status);
+        alert("Your enquiry has been sent!" );
     }).catch(function(error) {
         console.error("Email sending failed:", error);
     });
