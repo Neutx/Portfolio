@@ -186,14 +186,22 @@ function SendMail(event) {
     event.preventDefault(); // Prevent the default form submission
     console.log('SendMail() function called');
     var params = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        message: document.getElementById("message").value,
-    }
-    emailjs.send('service_po7nl6l', 'template_fzcaw5s', params).then(function(res){
-        alert("Your enquiry has been sent!" );
-    }).catch(function(error) {
-        console.error("Email sending failed:", error);
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      message: document.getElementById("message").value,
+    };
+  
+    emailjs.send('service_clpoeki', 'template_xqgjt1g', params).then(function (res) {
+      alert("Your enquiry has been sent!");
+      
+      // Clear the input fields
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("phone").value = "";
+      document.getElementById("message").value = "";
+    }).catch(function (error) {
+      console.error("Email sending failed:", error);
     });
-}
+  }
+  
