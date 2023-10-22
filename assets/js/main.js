@@ -181,6 +181,7 @@ function navHighlighter()
 
 
 //Email JS
+Honeybadger.notify("Testing Honeybadger!");
 
 function SendMail(event) {
     event.preventDefault(); // Prevent the default form submission
