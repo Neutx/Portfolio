@@ -1,9 +1,10 @@
+
 name: Update Sitemap
 
 on:
   push:
     branches:
-      - master
+      - master # Change this to your default branch if needed
 
 jobs:
   build:
@@ -16,13 +17,14 @@ jobs:
     - name: Update XML Sitemap
       run: |
         echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
-        echo '<table border="1" cellspacing="0" cellpadding="4">' >> sitemap.xml
-        echo '  <tr>' >> sitemap.xml
-        echo '    <th>Commit Hash</th>' >> sitemap.xml
-        echo '    <th>Commit Date</th>' >> sitemap.xml
-        echo '  </tr>' >> sitemap.xml
-        git log -n 10 --pretty=format:'  <tr>\n    <td><a href="https://github.com/Neutx/Portfolio/commit/%H">%h</a></td>\n    <td>%ad</td>\n  </tr>\n' --date=iso >> sitemap.xml
-        echo '</table>' >> sitemap.xml
+        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
+        echo '    <url>' >> sitemap.xml
+        echo '        <loc>https://adilparwez.live</loc>' >> sitemap.xml
+        echo '        <lastmod>'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'</lastmod>' >> sitemap.xml
+        echo '        <changefreq>monthly</changefreq>' >> sitemap.xml
+        echo '        <priority>0.5</priority>' >> sitemap.xml
+        echo '    </url>' >> sitemap.xml
+        echo '</urlset>' >> sitemap.xml
 
         git config user.name 'GitHub Actions'
         git config user.email 'dlprwz@gmail.com'
